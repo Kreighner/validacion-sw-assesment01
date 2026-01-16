@@ -2,17 +2,21 @@ package com.viraj.sample.controller;
 
 import com.viraj.sample.entity.Employee;
 import com.viraj.sample.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee/")
+@RequestMapping("/employee")
 public class EmployeeController {
 
-    @Autowired
-    private EmployeeService employeeService;
+
+    // Se cambia la inyección por constructor según sugerencia de sonarLint
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @GetMapping(path = "/hello")
     public String getMessage() {

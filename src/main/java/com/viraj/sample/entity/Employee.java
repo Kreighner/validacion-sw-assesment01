@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "EMPLOYEE")
 public class Employee {
 
+    // SonarLint no detecta problemas, por lo que no se hacen modificaciones
     @Id
     @Column(name = "EMPLOYEE_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
